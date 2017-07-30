@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCP网络协议端", "TCP�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCP客户端", "TCP客户端\TCP客户端.csproj", "{9A4BF20A-B36A-43BE-A452-0DA6535DAEAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "数据转换成字节数组", "数据转换成字节数组\数据转换成字节数组.csproj", "{F090F51A-A7B5-490C-B5ED-A887A2667A89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9A4BF20A-B36A-43BE-A452-0DA6535DAEAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A4BF20A-B36A-43BE-A452-0DA6535DAEAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A4BF20A-B36A-43BE-A452-0DA6535DAEAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F090F51A-A7B5-490C-B5ED-A887A2667A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F090F51A-A7B5-490C-B5ED-A887A2667A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F090F51A-A7B5-490C-B5ED-A887A2667A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F090F51A-A7B5-490C-B5ED-A887A2667A89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Configuration;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,17 +27,17 @@ namespace TCP网络协议端
             serverSocket.BeginAccept(AcceptCallBack,serverSocket);
            
         }
-
+        static  Message msg = new Message();
         static void AcceptCallBack(IAsyncResult ar)
         {
             Socket serverSocket  = ar.AsyncState as Socket;
             Socket clientSocket =   serverSocket.EndAccept(ar);
             //向客户端发送一条消息
-            string msg = "Hello client!你好咩。。。";
-            byte[] data = Encoding.UTF8.GetBytes(msg);
+            string msgStr = "Hello client!你好咩。。。";
+            byte[] data = Encoding.UTF8.GetBytes(msgStr);
             clientSocket.Send(data);
             byte[] dataBuffet = new byte[1024];
-            clientSocket.BeginReceive(dataBuffet, 0, 1024, SocketFlags.None, ReceiveCallBack, clientSocket);
+            clientSocket.BeginReceive(msg.Data, msg.StartIndex, msg.RemainSize , SocketFlags.None, ReceiveCallBack, clientSocket);
             serverSocket.BeginAccept(AcceptCallBack, serverSocket);
         }
          static byte[]dataBuffer = new byte[1024];
@@ -48,15 +49,17 @@ namespace TCP网络协议端
                 clientSocket = ar.AsyncState as Socket;
                 int count = clientSocket.EndReceive(ar);//
 
-                string msg = Encoding.UTF8.GetString(dataBuffer, 0, count);
-                Console.WriteLine("从客户端接收到数据：" +count+ msg);
+                //string msgStr = Encoding.UTF8.GetString(dataBuffer, 0, count);
+                //Console.WriteLine("从客户端接收到数据：" +count+ msgStr);
                 if (count == 0)
                 {
                     clientSocket.Close();
                     return;
                 }
-                  
-                clientSocket.BeginReceive(dataBuffer, 0, 1024, SocketFlags.None, ReceiveCallBack, clientSocket);
+                 msg.AddCount(count);
+                msg.ReadMessage();
+                //clientSocket.BeginReceive(dataBuffer, 0, 1024, SocketFlags.None, ReceiveCallBack, clientSocket);
+                clientSocket.BeginReceive(msg.Data, msg.StartIndex, msg.RemainSize, SocketFlags.None, ReceiveCallBack, clientSocket);
 
             }
             catch (Exception e)

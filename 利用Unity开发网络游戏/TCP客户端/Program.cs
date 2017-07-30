@@ -18,16 +18,20 @@ namespace TCP客户端
             int count = clientSocket.Receive(data);
             string msg = Encoding.UTF8.GetString(data, 0, count);
             Console.Write(msg);
-            while (true)
-            {
+            //while (true)
+            //{
                 
-                string s = Console.ReadLine();
-                if (s == "c")
-                {
-                    clientSocket.Close();
-                    return;
-                }
-                clientSocket.Send(Encoding.UTF8.GetBytes(s));
+            //    string s = Console.ReadLine();
+            //    if (s == "c")
+            //    {
+            //        clientSocket.Close();
+            //        return;
+            //    }
+            //    clientSocket.Send(Encoding.UTF8.GetBytes(s));
+            //}
+             for (int i = 0; i < 100; i++)
+            {
+                clientSocket.Send(Message.GetBytes(i.ToString()));
             }
             Console.ReadKey();
             clientSocket.Close();
