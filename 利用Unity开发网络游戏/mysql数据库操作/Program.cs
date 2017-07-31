@@ -30,11 +30,32 @@ namespace mysql数据库操作
 
             #endregion
 
-            string username = "cwer";
-            string password = "lcker";
-            MySqlCommand cmd = new MySqlCommand("insert into user set username ='" + username + "'" + ",password='" +
-                                            password+"'",conn);
-            cmd.ExecuteNonQuery();
+            #region 插入
+
+            //string username = "cwer";
+            //string password = "lcker;delete from user";
+            ////MySqlCommand cmd = new MySqlCommand("insert into user set username ='" + username + "'" + ",password='" +
+            ////password+"'",conn);
+            ////可以屏蔽sql注入
+            //MySqlCommand cmd = new MySqlCommand("insert into user set username=@un,password=@pwd", conn);
+            //cmd.Parameters.AddWithValue("un", username);
+            //cmd.Parameters.AddWithValue("pwd", password);
+            //cmd.ExecuteNonQuery();
+
+            #endregion
+
+            #region 删除
+
+            //MySqlCommand cmd = new MySqlCommand("delete from user where iduser = @iduser", conn);
+            //cmd.Parameters.AddWithValue("iduser", 18);
+            //cmd.ExecuteNonQuery();
+
+            #endregion
+            #region 更新
+            //MySqlCommand cmd = new MySqlCommand("update user set password = @pwd where iduser =11",conn);
+            //cmd.Parameters.AddWithValue("pwd", "sevenbbbb");
+            //cmd.ExecuteNonQuery();
+#endregion
             conn.Close();
             Console.ReadKey();
         }

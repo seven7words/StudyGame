@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TCP网络协议端
+namespace GameServer.Server
 {
     class Message
     {
@@ -23,7 +23,7 @@ namespace TCP网络协议端
 
         public int RemainSize
         {
-            get {return  data.Length - startIndex; }
+            get { return data.Length - startIndex; }
         }
 
         //public void AddCount(int count)
@@ -53,8 +53,8 @@ namespace TCP网络协议端
                     break;
                 }
             }
-           
-          
+
+
         }
     }
 }
