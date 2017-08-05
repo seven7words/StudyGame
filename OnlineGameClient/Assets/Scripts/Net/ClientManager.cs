@@ -24,6 +24,7 @@ public class ClientManager:BaseManager
         try
         {
             clientSocket.Connect(IP, PORT);
+            Start();
         }
         catch (Exception e)
         {
@@ -42,6 +43,7 @@ public class ClientManager:BaseManager
     {
         try
         {
+            if (clientSocket == null || clientSocket.Connected == false) return;
             int count = clientSocket.EndReceive(ar);
             msg.ReadMessage(count,OnProcessDataCallBack);
             Start();
@@ -54,10 +56,10 @@ public class ClientManager:BaseManager
         
     }
 
-    private void OnProcessDataCallBack(RequestCode requestCode, string data)
+    private void OnProcessDataCallBack(ActionCode actionCode, string data)
     {
         //TODO
-        facade.HandleResponse(requestCode,data);
+        facade.HandleResponse(actionCode, data);
     }
     public void SendRequest(RequestCode requestCode,ActionCode actionCode,string data)
     {

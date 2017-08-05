@@ -40,6 +40,7 @@ public class UIManager:BaseManager {
     private Dictionary<UIPanelType, BasePanel> panelDict;//保存所有实例化面板的游戏物体身上的BasePanel组件
     private Stack<BasePanel> panelStack;
     private MessagePanel messagePanel;
+    //private UIPanelType panelTypeToPush = UIPanelType.None;
     public UIManager(GameFacade facade):base(facade)
     {
         ParseUIPanelTypeJson();
@@ -117,6 +118,7 @@ public class UIManager:BaseManager {
             GameObject instPanel = GameObject.Instantiate(Resources.Load(path)) as GameObject;
             instPanel.transform.SetParent(CanvasTransform,false);
             instPanel.GetComponent<BasePanel>().UiManager = this;
+            instPanel.GetComponent<BasePanel>().Facade = facade;
             panelDict.Add(panelType, instPanel.GetComponent<BasePanel>());
             return instPanel.GetComponent<BasePanel>();
         }
@@ -161,13 +163,16 @@ public class UIManager:BaseManager {
         }
         messagePanel.ShowMessage(msg);
     }
-    /// <summary>
-    /// just for test
-    /// </summary>
-    public void Test()
+
+    public void ShowMessageSync(string msg)
     {
-        string path ;
-        //panelPathDict.TryGetValue(UIPanelType.Knapsack,out path);
-        //Debug.Log(path);
+        if (messagePanel == null)
+        {
+            Debug.Log("无法显示提示信息，panel为空");
+            return;
+        }
+        messagePanel.ShowMessageSync(msg);
+
     }
+
 }

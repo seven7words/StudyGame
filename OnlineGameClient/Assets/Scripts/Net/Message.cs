@@ -33,7 +33,7 @@ public class Message  {
         /// <summary>
         /// 读取数据
         /// </summary>
-        public void ReadMessage(int newDataAmount, Action<RequestCode, string> processDataCallBack)
+        public void ReadMessage(int newDataAmount, Action<ActionCode, string> processDataCallBack)
         {
             startIndex += newDataAmount;
             while (true)
@@ -43,12 +43,12 @@ public class Message  {
                 int count = BitConverter.ToInt32(data, 0);
                 if ((startIndex - 4) >= count)
                 {
-                    //string s = Encoding.UTF8.GetString(data, 4, count);
-                    //Console.WriteLine("解析出来一挑数据" + s);
-                    RequestCode requestCode = (RequestCode)BitConverter.ToInt32(data, 4);
+                //string s = Encoding.UTF8.GetString(data, 4, count);
+                //Console.WriteLine("解析出来一挑数据" + s);
+                    ActionCode actionCode = (ActionCode)BitConverter.ToInt32(data, 4);
                    
                     string s = Encoding.UTF8.GetString(data, 8,count-4);
-                    processDataCallBack(requestCode, s);
+                    processDataCallBack(actionCode, s);
        
                     Array.Copy(data, count + 4, data, 0, startIndex - 4 - count);
                     startIndex -= (count + 4);
@@ -62,15 +62,15 @@ public class Message  {
 
         }
 
-        public static byte[] PackData(RequestCode requestCode, string data)
-        {
-            byte[] requestCodeBytes = BitConverter.GetBytes((int)requestCode);
-            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
-            int dataAmount = requestCodeBytes.Length + dataBytes.Length;
-            byte[] dataAmountBytes = BitConverter.GetBytes(dataAmount);
-            byte[] newBytes = dataAmountBytes.Concat(requestCodeBytes).ToArray<byte>();//Concat(dataBytes);
-            return newBytes.Concat(dataBytes).ToArray<byte>();
-        }
+        //public static byte[] PackData(ActionCode actionCode, string data)
+        //{
+        //    byte[] actionCodeBytes = BitConverter.GetBytes((int)actionCode);
+        //    byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+        //    int dataAmount = actionCodeBytes.Length + dataBytes.Length;
+        //    byte[] dataAmountBytes = BitConverter.GetBytes(dataAmount);
+        //    byte[] newBytes = dataAmountBytes.Concat(actionCodeBytes).ToArray<byte>();//Concat(dataBytes);
+        //    return newBytes.Concat(dataBytes).ToArray<byte>();
+        //}
     public static byte[] PackData(RequestCode requestCode,ActionCode actionCode, string data)
     {
         byte[] requestCodeBytes = BitConverter.GetBytes((int)requestCode);

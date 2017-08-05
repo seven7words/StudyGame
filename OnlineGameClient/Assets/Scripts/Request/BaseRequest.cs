@@ -4,10 +4,31 @@ using UnityEngine;
 using Common;
 public class BaseRequest : MonoBehaviour
 {
-    private RequestCode requestCode = RequestCode.None;
+    protected RequestCode requestCode = RequestCode.None;
+    protected ActionCode actionCode = ActionCode.None;
+
+    protected GameFacade _facade;
+
+    protected GameFacade facade
+    {
+        get
+        {
+            if (_facade == null)
+            {
+                _facade = GameFacade.Instance;
+            }
+            return _facade;
+            
+        }
+    }
+    protected void SendRequset(string data)
+    {
+        facade.SendRequest(requestCode, actionCode, data);
+    }
 	// Use this for initialization
 	public virtual void Awake () {
-		GameFacade.Instance.AddRequest(requestCode,this);
+	    facade.AddRequest(actionCode,this);
+	    //facade = GameFacade.Instance;
 	}
 
     public virtual void SendRequest()
@@ -22,6 +43,7 @@ public class BaseRequest : MonoBehaviour
 
     public virtual void OnDestroy()
     {
-        GameFacade.Instance.RemoveRequest(requestCode);
+        if(facade!=null)
+            GameFacade.Instance.RemoveRequest(actionCode);
     }
 }

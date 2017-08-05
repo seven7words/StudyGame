@@ -8,6 +8,20 @@ public class MessagePanel : BasePanel
 {
     private Text text;
     private float showTime = 1;
+    private string message = null;
+    private void Awake()
+    {
+        
+    }
+
+    void Update()
+    {
+        if (!string.IsNullOrEmpty(message))
+        {
+            ShowMessage(message);
+            message = null;
+        }
+    }
     public override void OnEnter()
     {
         base.OnEnter();
@@ -17,6 +31,10 @@ public class MessagePanel : BasePanel
 
     }
 
+    public void ShowMessageSync(string msg)
+    {
+        message = msg;
+    }
     public void ShowMessage(string msg)
     {
         text.DOFade(1, showTime);

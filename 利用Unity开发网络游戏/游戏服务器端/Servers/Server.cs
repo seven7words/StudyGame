@@ -14,7 +14,7 @@ namespace GameServer.Servers
     {
         private IPEndPoint ipEndPoint;
         private Socket serverSocket;
-        private List<Client> clientList;
+        private List<Client> clientList = new List<Client>();
         private ControllerManager controllerManager;
         public Server()
         {
@@ -47,6 +47,7 @@ namespace GameServer.Servers
             Client client = new Client(clientSocket,this);
             client.Start();
             clientList.Add(client);
+            serverSocket.BeginAccept(AcceptCallBack, null);
         }
 
         public void RemoveClient(Client client)
@@ -58,9 +59,9 @@ namespace GameServer.Servers
             
         }
 
-        public void SendResponse(Client client, RequestCode requestCode, string data)
+        public void SendResponse(Client client, ActionCode actionCode, string data)
         {
-            client.Send(requestCode,data);
+            client.Send(actionCode,data);
         }
 
         public void HandlerRequest(RequestCode requestCode, ActionCode actionCode, string data, Client client)

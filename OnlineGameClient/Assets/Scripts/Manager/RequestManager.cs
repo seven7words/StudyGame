@@ -9,24 +9,24 @@ public class RequestManager : BaseManager {
     {
 
     }
-    private Dictionary<RequestCode,BaseRequest> requestDict = new Dictionary<RequestCode, BaseRequest>();
+    private Dictionary<ActionCode,BaseRequest> requestDict = new Dictionary<ActionCode, BaseRequest>();
 
-    public void AddRequest(RequestCode requestCode, BaseRequest request)
+    public void AddRequest(ActionCode actionCode, BaseRequest request)
     {
-        requestDict.Add(requestCode,request);
+        requestDict.Add(actionCode,request);
     }
 
-    public void RemoveRequest(RequestCode requestCode)
+    public void RemoveRequest(ActionCode actionCode)
     {
-        requestDict.Remove(requestCode);
+        requestDict.Remove(actionCode);
     }
 
-    public void HandleResponse(RequestCode requestCode, string data)
+    public void HandleResponse(ActionCode actionCode, string data)
     {
-       BaseRequest request =  requestDict.TryGet<RequestCode,BaseRequest>(requestCode);
+       BaseRequest request =  requestDict.TryGet<ActionCode, BaseRequest>(actionCode);
         if (request == null)
         {
-            Debug.LogWarning("无法得到RequestCode["+requestCode+"]对应的Request类");
+            Debug.LogWarning("无法得到ActionCode["+ actionCode + "]对应的Request类");
             return;
         }
         

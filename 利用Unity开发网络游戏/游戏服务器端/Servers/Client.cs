@@ -16,6 +16,11 @@ namespace GameServer.Servers
         private Server server;
         private Message msg = new Message();
         private MySqlConnection mysqlConn;
+
+        public MySqlConnection MySQLConn
+        {
+            get { return mysqlConn; }
+        }
         public Client()
         {
             
@@ -30,6 +35,7 @@ namespace GameServer.Servers
 
         public void Start()
         {
+            if (clientSocket == null || clientSocket.Connected == false) return;
             clientSocket.BeginReceive(msg.Data,msg.StartIndex,msg.RemainSize,SocketFlags.None, ReceiveCallBack,null);
         }
 
@@ -37,6 +43,7 @@ namespace GameServer.Servers
         {
             try
             {
+                if (clientSocket == null || clientSocket.Connected == false) return;
                 int count = clientSocket.EndReceive(ar);
                 if (count == 0)
                 {
@@ -66,10 +73,17 @@ namespace GameServer.Servers
             server.RemoveClient(this);
         }
 
-        public void Send(RequestCode requestCode, string data)
+        public void Send(ActionCode actionCode, string data)
         {
-            byte[] bytes = Message.PackData(requestCode, data);
-            clientSocket.Send(bytes);
+            try
+           {
+                byte[] bytes = Message.PackData(actionCode, data);
+                clientSocket.Send(bytes);
+             }catch (Exception e)
+            {
+                Console.WriteLine("无法发送消息:" + e);
+             }
+
         }
     }
 }
