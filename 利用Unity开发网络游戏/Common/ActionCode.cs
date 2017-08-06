@@ -11,5 +11,8 @@ namespace Common
         None,
         Login,
         Register,
+        ListRoom,
+        CreateRoom,
+        JoinRoom,
     }
 }

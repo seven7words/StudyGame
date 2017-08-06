@@ -40,6 +40,8 @@ public class UIManager:BaseManager {
     private Dictionary<UIPanelType, BasePanel> panelDict;//保存所有实例化面板的游戏物体身上的BasePanel组件
     private Stack<BasePanel> panelStack;
     private MessagePanel messagePanel;
+
+    private UIPanelType panelTypeToPush = UIPanelType.None;
     //private UIPanelType panelTypeToPush = UIPanelType.None;
     public UIManager(GameFacade facade):base(facade)
     {
@@ -53,6 +55,16 @@ public class UIManager:BaseManager {
         PushPanel(UIPanelType.Start);
     }
 
+    public override void Update()
+    {
+      
+        if (panelTypeToPush != UIPanelType.None)
+        {
+            PushPanel(panelTypeToPush);
+            panelTypeToPush = UIPanelType.None;
+            
+        }
+    }
 
     /// <summary>
     /// 把某个页面入栈，  把某个页面显示在界面上
@@ -72,6 +84,11 @@ public class UIManager:BaseManager {
         BasePanel panel = GetPanel(panelType);
         panel.OnEnter();
         panelStack.Push(panel);
+    }
+
+    public void PushPanelSync(UIPanelType panelType)
+    {
+        panelTypeToPush = panelType;
     }
     /// <summary>
     /// 出栈 ，把页面从界面上移除

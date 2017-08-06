@@ -12,4 +12,5 @@ public class BaseManager
     {
         this.facade = facade;
     }
+    
 }

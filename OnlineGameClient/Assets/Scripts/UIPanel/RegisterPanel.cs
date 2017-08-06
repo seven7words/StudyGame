@@ -35,6 +35,7 @@ public class RegisterPanel : BasePanel
 
     private void OnRegisterClick()
     {
+        PlayClickSound();
         string msg = "";
         if (string.IsNullOrEmpty(usernameInputField.text))
         {
@@ -73,6 +74,7 @@ public class RegisterPanel : BasePanel
     }
     private void OnCloseClick()
     {
+        PlayClickSound();
         transform.DOScale(0, 0.5f);
 
         Tweener tweener = transform.DOLocalMove(new Vector3(1000, 0, 0), 0.5f);
