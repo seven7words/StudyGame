@@ -10,6 +10,6 @@ namespace Common
     {
         None,
         Login,
-        Resigter,
+        Register,
     }
 }

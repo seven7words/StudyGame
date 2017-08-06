@@ -17,6 +17,11 @@ public class LoginPanel : BasePanel
     ///private Button registerButton;
     private void Start()
     {
+       
+    }
+    public override void OnEnter()
+    {
+        base.OnEnter();
         gameObject.SetActive(true);
         transform.localScale = Vector3.zero;
         transform.DOScale(1, 0.5f);
@@ -31,16 +36,12 @@ public class LoginPanel : BasePanel
 
         transform.Find("RegisterButton").GetComponent<Button>().onClick.AddListener(OnRigisterClick);
 
-    }
-    public override void OnEnter()
-    {
-        base.OnEnter();
-        
+
     }
 
     private void OnRigisterClick()
     {
-        throw new NotImplementedException();
+        uiManager.PushPanel(UIPanelType.Register);
     }
 
     private void OnLoginClick()
