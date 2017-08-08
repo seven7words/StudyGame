@@ -19,7 +19,7 @@ public class RegisterRequest : BaseRequest
     {
 
         string data = username + "," + password;
-        base.SendRequset(data);
+        base.SendRequest(data);
 
     }
 

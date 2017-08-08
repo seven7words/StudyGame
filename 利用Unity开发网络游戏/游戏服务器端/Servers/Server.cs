@@ -69,5 +69,12 @@ namespace GameServer.Servers
         {
             controllerManager.HandleRequest(requestCode,actionCode,data,client);
         }
+
+        public void CreateRoom(Client client)
+        {
+            Room room = new Room();
+            room.AddClient(client);
+            roomList.Add(room);
+        }
     }
 }

@@ -25,9 +25,16 @@ public class RoomListPanel : BasePanel
         roomList = transform.Find("RoomList").GetComponent<RectTransform>();
         transform.Find("RoomList/CloseButton").GetComponent<Button>().onClick.AddListener(OnCloseClick);
         roomLayout = transform.Find("RoomList/ScrollRect/Layout").GetComponent<VerticalLayoutGroup>();
+        transform.Find("RoomList/CreateRoomButton").GetComponent<Button>().onClick.AddListener(OnCreateRoomClick);
 
         EnterAnim();
     }
+
+    private void OnCreateRoomClick()
+    {
+        uiManager.PushPanel(UIPanelType.Room);
+    }
+
     public override void OnEnter()
     {
         SetBattleRes();
@@ -87,11 +94,13 @@ public class RoomListPanel : BasePanel
             roomCount*roomItemPrefab.GetComponent<RectTransform>().sizeDelta.y+roomLayout.spacing);
     }
 
-    void Update()
+    public override void OnPause()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            LoadRoomItem(1);
-        }
+       HideAnim();
+    }
+
+    public override void OnResume()
+    {
+        EnterAnim();
     }
 }

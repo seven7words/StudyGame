@@ -18,5 +18,10 @@ namespace GameServer.Servers
     {
         private List<Client> clientRoom = new List<Client>();
         private RoomState state = RoomState.WaitingJoin;
+
+        public void AddClient(Client client)
+        {
+            clientRoom.Add(client);
+        }
     }
 }
