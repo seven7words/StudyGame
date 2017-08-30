@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Common;
+using GameServer.Model;
 using GameServer.Tool;
 using MySql.Data.MySqlClient;
 
@@ -16,10 +17,36 @@ namespace GameServer.Servers
         private Server server;
         private Message msg = new Message();
         private MySqlConnection mysqlConn;
+        private User user;
+        private Room room;
+        private Result result;
 
         public MySqlConnection MySQLConn
         {
             get { return mysqlConn; }
+        }
+
+
+
+        public Room Room
+        {
+            set { room = value; }
+            get { return room; }
+        }
+        public void SetUserData(User user, Result result)
+        {
+            this.user = user;
+            this.result = result;
+        }
+
+        public string GetUserData()
+        {
+            return user.Id+","+ user.Username + "," + result.TotalCount + "," + result.WinCount;
+        }
+
+        public int GetUserId()
+        {
+            return user.Id;
         }
         public Client()
         {
@@ -70,7 +97,12 @@ namespace GameServer.Servers
             ConnHelper.CloseConnection(mysqlConn);
             if(clientSocket!=null)
                 clientSocket.Close();
+            if (room != null)
+            {
+                room.QuitRoom(this);
+            }
             server.RemoveClient(this);
+           
         }
 
         public void Send(ActionCode actionCode, string data)
@@ -84,6 +116,11 @@ namespace GameServer.Servers
                 Console.WriteLine("无法发送消息:" + e);
              }
 
+        }
+
+        public bool IsHouseOwner()
+        {
+            return Room.IsHouseOwner(this);
         }
     }
 }

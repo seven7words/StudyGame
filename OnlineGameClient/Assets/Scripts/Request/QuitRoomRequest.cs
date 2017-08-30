@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using Common;
 using UnityEngine;
 
-public class CreateRoomRequest : BaseRequest
+public class QuitRoomRequest : BaseRequest
 {
+
     private RoomPanel roomPanel;
     public override void Awake()
     {
-        requestCode = RequestCode.Room;
-        actionCode = ActionCode.CreateRoom;
         roomPanel = GetComponent<RoomPanel>();
-
+        requestCode = RequestCode.Room;
+        actionCode = ActionCode.QuitRoom;
         base.Awake();
     }
 
-    
     public override void SendRequest()
     {
         base.SendRequest("r");
@@ -23,12 +22,10 @@ public class CreateRoomRequest : BaseRequest
 
     public override void OnResponse(string data)
     {
-        ReturnCode returnCode = (ReturnCode) int.Parse(data);
+        ReturnCode returnCode = (ReturnCode)int.Parse(data);
         if (returnCode == ReturnCode.Success)
         {
-            UserData ud = facade.GetUserData();
-            roomPanel.SetSetLocalPlayerResSync();
-            //roomPanel.SetLocalPlayerRes(ud.Username,ud.WinCount.ToString(),ud.TotalCount.ToString());
+            roomPanel.OnExitResponse();
         }
     }
 }

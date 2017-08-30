@@ -158,7 +158,9 @@ GameObject:
   m_Component:
   - component: {fileID: 224129392176795830}
   - component: {fileID: 114447311341998084}
-  - component: {fileID: 114538195080204540}
+  - component: {fileID: 114263105006908928}
+  - component: {fileID: 114275583527396568}
+  - component: {fileID: 114749966569218854}
   m_Layer: 5
   m_Name: RoomPanel
   m_TagString: Untagged
@@ -368,6 +370,28 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114263105006908928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689047997461992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a200ce47d35ae314883aea04e95c79d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114275583527396568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689047997461992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681d006214257494d816ebf4e6f55269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114386635025259876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -410,17 +434,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e317e1bc57c2d3b4e811a48cbb2e1a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114538195080204540
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1689047997461992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2d658b263100ba489cd347571e54297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114655540295162282
@@ -590,6 +603,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114749966569218854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689047997461992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d14220da07d16941b27c218b8c0a758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114759273197526714
 MonoBehaviour:
   m_ObjectHideFlags: 1

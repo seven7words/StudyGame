@@ -99,7 +99,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CreateRoomRequest.cs" />
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\Res\ImageEffects\Scripts\Antialiasing.cs" />
     <Compile Include="Assets\Res\ImageEffects\Scripts\Bloom.cs" />
@@ -149,10 +148,20 @@
     <Compile Include="Assets\Scripts\Model\UserData.cs" />
     <Compile Include="Assets\Scripts\Net\ClientManager.cs" />
     <Compile Include="Assets\Scripts\Net\Message.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Request\BaseRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\CreateRoomRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\JoinRoomRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\ListRoomRequest.cs" />
     <Compile Include="Assets\Scripts\Request\LoginRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\QuitRoomRequest.cs" />
     <Compile Include="Assets\Scripts\Request\RegisterRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\ShowTimerRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\StartGameRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\UpdateRoomRequest.cs" />
     <Compile Include="Assets\Scripts\UIPanel\BasePanel.cs" />
+    <Compile Include="Assets\Scripts\UIPanel\GamePanel.cs" />
     <Compile Include="Assets\Scripts\UIPanel\LoginPanel.cs" />
     <Compile Include="Assets\Scripts\UIPanel\MessagePanel.cs" />
     <Compile Include="Assets\Scripts\UIPanel\RegisterPanel.cs" />

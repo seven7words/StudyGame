@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Common;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -17,8 +18,13 @@ public class RoomPanel : BasePanel
     private Transform redPanel;
     private Transform startButton;
     private Transform exitButton;
-    private CreateRoomRequest crRequest;
     private UserData ud = null;
+    private UserData ud1 = null;
+    private UserData ud2 = null;
+    private bool isPop = false;
+    private QuitRoomRequest quitRoomRequest;
+    private StartGameRequest startGameRequest;
+    private bool isPushGamePanel = false;
     void Start()
     {
         localPlayerUsername = transform.Find("BluePanel/Username").GetComponent<Text>();
@@ -33,6 +39,8 @@ public class RoomPanel : BasePanel
         redPanel = transform.Find("RedPanel");
         startButton = transform.Find("StartButton");
         exitButton = transform.Find("ExitButton");
+        quitRoomRequest = GetComponent<QuitRoomRequest>();
+        startGameRequest = GetComponent<StartGameRequest>();
         EnterAnim();
     }
 
@@ -40,8 +48,7 @@ public class RoomPanel : BasePanel
     {
         if(bluePanel!=null)
             base.OnEnter();
-        crRequest = GetComponent<CreateRoomRequest>();
-        crRequest.SendRequest();
+        
        
     }
 
@@ -66,6 +73,11 @@ public class RoomPanel : BasePanel
     public void SetSetLocalPlayerResSync()
     {
         ud = facade.GetUserData();
+    }
+    public void SetAllPlayerResSync(UserData ud1,UserData ud2)
+    {
+        this.ud1 = ud1;
+        this.ud2 = ud2;
     }
     public void SetLocalPlayerRes(string username, string winCount, string totalCount)
     {
@@ -94,14 +106,32 @@ public class RoomPanel : BasePanel
     }
     private void OnStartClick()
     {
-        
+        startGameRequest.SendRequest();
     }
 
     private void OnExitClick()
     {
-        
+        quitRoomRequest.SendRequest();
     }
 
+    public void OnExitResponse()
+    {
+        isPop = true;
+       
+    }
+
+    public void OnStartResponse(ReturnCode returnCode)
+    {
+        if (returnCode == ReturnCode.Fail)
+        {
+            uiManager.ShowMessageSync("您不是房主，无法开始游戏");
+        }
+        else
+        {
+            //TODO
+            uiManager.PushPanelSync(UIPanelType.Game);
+        }
+    }
     private void EnterAnim()
     {
         gameObject.SetActive(true);
@@ -132,5 +162,23 @@ public class RoomPanel : BasePanel
             ClearEnemyPlayerRes();
             ud = null;
         }
+        if (ud1 != null)
+        {
+            SetLocalPlayerRes(ud1.Username,ud1.TotalCount.ToString(),ud1.WinCount.ToString());
+            if(ud2!=null)
+                SetEnemyPlayerRes(ud2.Username, ud2.TotalCount.ToString(), ud2.WinCount.ToString());
+            else
+            {
+                ClearEnemyPlayerRes();
+            }
+            ud1 = null;
+            ud2 = null;
+        }
+        if (isPop)
+        {
+            uiManager.PopPanel();
+            isPop = false;
+        }
+      
     }
 }

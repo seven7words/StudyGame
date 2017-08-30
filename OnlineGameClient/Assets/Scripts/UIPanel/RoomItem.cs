@@ -13,30 +13,41 @@ public class RoomItem : MonoBehaviour
 
     public Text winCount;
     public Button joinButton;
-     
+
+    private int id;
+
+    private RoomListPanel panel;
 	// Use this for initialization
 	void Start () {
         if(joinButton!=null)
 		    joinButton.onClick.AddListener(OnJoinClick);
 	}
 
-    public void SetRoomInfo(string username, int totalCount, int winCount)
+    public void SetRoomInfo(int id,string username, int totalCount, int winCount,RoomListPanel panel)
     {
+        this.id = id;
         this.username.text = username;
         this.totalCount.text = "总场数：\n" + totalCount.ToString();
         this.winCount.text = "胜利场数：\n" + winCount.ToString();
+        this.panel = panel;
     }
-    public void SetRoomInfo(string username, string totalCount, string winCount)
+    public void SetRoomInfo(int id,string username, string totalCount, string winCount, RoomListPanel panel)
     {
+        this.id = id;
         this.username.text = username;
         this.totalCount.text = "总场数：\n" + totalCount;
         this.winCount.text = "胜利场数：\n" + winCount;
+        this.panel = panel;
     }
     private void OnJoinClick()
     {
-        throw new NotImplementedException();
+        panel.OnJoinClick(id);
     }
 
+    public void DestroySelf()
+    {
+        GameObject.Destroy(this.gameObject);
+    }
     // Update is called once per frame
     void Update () {
 		

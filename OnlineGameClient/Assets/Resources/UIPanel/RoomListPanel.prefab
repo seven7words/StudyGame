@@ -262,6 +262,9 @@ GameObject:
   m_Component:
   - component: {fileID: 224216682815700386}
   - component: {fileID: 114825066179079590}
+  - component: {fileID: 114354419441421506}
+  - component: {fileID: 114928569811232822}
+  - component: {fileID: 114642334097011402}
   m_Layer: 5
   m_Name: RoomListPanel
   m_TagString: Untagged
@@ -324,8 +327,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114733667719922148}
   m_HandleRect: {fileID: 224914437324531272}
   m_Direction: 2
-  m_Value: 0.99982613
-  m_Size: 0.46006393
+  m_Value: 0.9998262
+  m_Size: 0.46075666
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -498,7 +501,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: chuangjian
+  m_Text: "\u5237\u65B0"
 --- !u!114 &114243765144633572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -540,6 +543,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114354419441421506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963293750863532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8443af0535c625643bb01496a3574e88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114367813102819560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -615,7 +629,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: chuangjian
+  m_Text: "\u521B\u5EFA\u623F\u95F4"
 --- !u!114 &114503063846748268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -643,6 +657,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114642334097011402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963293750863532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35efa124205e74a489140632991dd384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114664627913774464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -852,6 +877,17 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+--- !u!114 &114928569811232822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963293750863532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d658b263100ba489cd347571e54297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114939827838324014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1048,7 +1084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.8575, y: 7.2}
+  m_AnchoredPosition: {x: -9.857485, y: 7.199951}
   m_SizeDelta: {x: 412.72, y: 244.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224216682815700386
@@ -1276,11 +1312,11 @@ RectTransform:
   m_Father: {fileID: 224159788001611720}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -143.6}
-  m_SizeDelta: {x: 0, y: 287.3}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 122.4498}
+  m_SizeDelta: {x: 412, y: 531.3}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224914437324531272
 RectTransform:
   m_ObjectHideFlags: 1

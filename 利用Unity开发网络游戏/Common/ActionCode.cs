@@ -14,5 +14,10 @@ namespace Common
         ListRoom,
         CreateRoom,
         JoinRoom,
+        UpdateRoom,
+        QuitRoom,
+        StartGame,
+        ShowTimer,
+        StartPlay,
     }
 }

@@ -7,7 +7,6 @@ public class BaseRequest : MonoBehaviour
     protected RequestCode requestCode = RequestCode.None;
     protected ActionCode actionCode = ActionCode.None;
     protected GameFacade _facade;
-
     protected GameFacade facade
     {
         get
