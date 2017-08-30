@@ -26,15 +26,16 @@ namespace TCP网络协议端
             get {return  data.Length - startIndex; }
         }
 
-        public void AddCount(int count)
-        {
-            startIndex += count;
-        }
+        //public void AddCount(int count)
+        //{
+        //    startIndex += count;
+        //}
         /// <summary>
         /// 读取数据
         /// </summary>
-        public void ReadMessage()
+        public void ReadMessage(int newDataAmount)
         {
+            startIndex += newDataAmount;
             while (true)
             {
                 if (startIndex <= 4)

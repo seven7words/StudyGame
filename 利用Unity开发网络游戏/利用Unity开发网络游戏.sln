@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCP客户端", "TCP客户�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "数据转换成字节数组", "数据转换成字节数组\数据转换成字节数组.csproj", "{F090F51A-A7B5-490C-B5ED-A887A2667A89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mysql数据库操作", "mysql数据库操作\mysql数据库操作.csproj", "{A3F3474F-DF2F-4F45-BF30-26BF9B217C8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "游戏服务器端", "游戏服务器端\游戏服务器端.csproj", "{B176BDC7-E8E0-4AE3-B812-2A583BE379C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{88D627CE-424D-4D23-BC95-446F85CD524F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +33,18 @@ Global
 		{F090F51A-A7B5-490C-B5ED-A887A2667A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F090F51A-A7B5-490C-B5ED-A887A2667A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F090F51A-A7B5-490C-B5ED-A887A2667A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3F3474F-DF2F-4F45-BF30-26BF9B217C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3F3474F-DF2F-4F45-BF30-26BF9B217C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3F3474F-DF2F-4F45-BF30-26BF9B217C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3F3474F-DF2F-4F45-BF30-26BF9B217C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B176BDC7-E8E0-4AE3-B812-2A583BE379C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B176BDC7-E8E0-4AE3-B812-2A583BE379C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B176BDC7-E8E0-4AE3-B812-2A583BE379C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B176BDC7-E8E0-4AE3-B812-2A583BE379C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88D627CE-424D-4D23-BC95-446F85CD524F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88D627CE-424D-4D23-BC95-446F85CD524F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88D627CE-424D-4D23-BC95-446F85CD524F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88D627CE-424D-4D23-BC95-446F85CD524F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
