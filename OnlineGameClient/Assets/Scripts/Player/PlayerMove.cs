@@ -16,12 +16,12 @@ public class PlayerMove : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    if (anim.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+	    if (anim.GetCurrentAnimatorStateInfo(0).IsName("Grounded") ==false)
             return;
         float h = Input.GetAxis("Horizontal");
 	    float v = Input.GetAxis("Vertical");
 
-	    if (Mathf.Abs(h) > 0 || Mathf.Abs(v) > 0)
+	    if (h!=0 || v!=0)
 	    {
 	        transform.Translate(new Vector3(h, 0, v) * speed * Time.deltaTime, Space.World);
 
