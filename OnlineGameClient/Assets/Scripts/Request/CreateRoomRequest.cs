@@ -28,7 +28,10 @@ public class CreateRoomRequest : BaseRequest
 
     public override void OnResponse(string data)
     {
-        ReturnCode returnCode = (ReturnCode) int.Parse(data);
+        string[] strs = data.Split(',');
+        ReturnCode returnCode = (ReturnCode) int.Parse(strs[0]);
+        RoleType roleType = (RoleType)int.Parse(strs[1]);
+        facade.SetCurrentRoleType(roleType);
         if (returnCode == ReturnCode.Success)
         {
             UserData ud = facade.GetUserData();

@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
 	{
 	    if (anim.GetCurrentAnimatorStateInfo(0).IsName("Grounded") ==false)
             return;

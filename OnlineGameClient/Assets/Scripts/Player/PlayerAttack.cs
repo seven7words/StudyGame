@@ -7,6 +7,8 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     private Transform leftHandTrans;
     public GameObject arrowPrefab;
+
+    private Vector3 shootDir;
 	// Use this for initialization
 	void Start ()
 	{
@@ -19,27 +21,29 @@ public class PlayerAttack : MonoBehaviour
     void Update () {
 	    if (anim.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
 	    {
-	        if (Input.GetMouseButton(0))
+	        if (Input.GetMouseButtonDown(0))
 	        {
 	            Ray ray=    Camera.main.ScreenPointToRay(Input.mousePosition);
 	            RaycastHit hit;
 	            bool isCollider =    Physics.Raycast(ray, out hit);
 	            if (isCollider)
 	            {
-	                Vector3 point = hit.point;
+	                Vector3 tartgetPoint = hit.point;
+	                tartgetPoint.y = transform.position.y;
+	                shootDir = tartgetPoint - transform.position;
+                    transform.rotation = Quaternion.LookRotation(shootDir);
                     anim.SetTrigger("Attack");
-                    Shoot(point);
+                    Invoke("Shoot",0.3f);
+                  
 	            }
 
 	        }
 	    }
 	}
 
-    private void Shoot(Vector3 tartgetPoint)
+    private void Shoot()
     {
-        tartgetPoint.y = transform.position.y;
-        Vector3 dir = tartgetPoint - transform.position;
-        GameObject.Instantiate(arrowPrefab, leftHandTrans.position, Quaternion.LookRotation(dir));
+        GameObject.Instantiate(arrowPrefab, leftHandTrans.position, Quaternion.LookRotation(shootDir));
 
     }
 }

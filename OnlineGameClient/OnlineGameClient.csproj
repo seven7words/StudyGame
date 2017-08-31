@@ -138,6 +138,7 @@
     <Compile Include="Assets\Res\ImageEffects\Scripts\Twirl.cs" />
     <Compile Include="Assets\Res\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
     <Compile Include="Assets\Res\ImageEffects\Scripts\Vortex.cs" />
+    <Compile Include="Assets\Scripts\Camera\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\GameFacade.cs" />
     <Compile Include="Assets\Scripts\Manager\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Manager\BaseManager.cs" />
@@ -148,8 +149,10 @@
     <Compile Include="Assets\Scripts\Model\UserData.cs" />
     <Compile Include="Assets\Scripts\Net\ClientManager.cs" />
     <Compile Include="Assets\Scripts\Net\Message.cs" />
+    <Compile Include="Assets\Scripts\Player\Arrow.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\Player\RoleData.cs" />
     <Compile Include="Assets\Scripts\Request\BaseRequest.cs" />
     <Compile Include="Assets\Scripts\Request\CreateRoomRequest.cs" />
     <Compile Include="Assets\Scripts\Request\JoinRoomRequest.cs" />

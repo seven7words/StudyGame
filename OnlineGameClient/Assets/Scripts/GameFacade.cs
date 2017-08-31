@@ -12,6 +12,7 @@ public class GameFacade : MonoBehaviour
         get { return _instance; }
     }
 
+    private bool isEnterPlay = false;
     private UIManager uiManager;
 
     private AudioManager audioManager;
@@ -41,6 +42,11 @@ public class GameFacade : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 		UpdateManager();
+	    if (isEnterPlay)
+	    {
+	        EnterPlaying();
+	        isEnterPlay = false;
+	    }
 	}
     void OnDestroy()
     {
@@ -125,4 +131,25 @@ public class GameFacade : MonoBehaviour
     {
         return playerManager.UserData;
     }
+    public void SetCurrentRoleType(RoleType rt)
+    {
+        playerManager.SetCurrentRoleType(rt);
+    }
+    public GameObject GetCurrentRoleGameObject()
+    {
+        return playerManager.GetCurrentRoleGameObject();
+    }
+
+    private void EnterPlaying()
+    {
+        playerManager.SpawnRoles();
+        cameraManager.FollowRole();
+    }
+
+    public void EnterPlayingSync()
+    {
+        isEnterPlay = true;
+    }
+
+   
 }

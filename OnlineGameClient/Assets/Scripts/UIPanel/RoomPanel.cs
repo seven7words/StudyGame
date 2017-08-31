@@ -129,7 +129,9 @@ public class RoomPanel : BasePanel
         else
         {
             //TODO
+
             uiManager.PushPanelSync(UIPanelType.Game);
+            facade.EnterPlayingSync();
         }
     }
     private void EnterAnim()
