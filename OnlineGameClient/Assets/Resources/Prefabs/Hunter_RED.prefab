@@ -443,8 +443,7 @@ GameObject:
   - component: {fileID: 95436003816278876}
   - component: {fileID: 54956432244735696}
   - component: {fileID: 136030345467775392}
-  - component: {fileID: 114599515995361094}
-  - component: {fileID: 114243793323774856}
+  - component: {fileID: 114364071778653740}
   m_Layer: 8
   m_Name: Hunter_RED
   m_TagString: Untagged
@@ -978,7 +977,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114243793323774856
+--- !u!114 &114364071778653740
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -986,22 +985,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1971890476388706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 766bee627ddd51c408d3d5d90b5a34df, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dad5539edaaaad4fb4b6323e6eee4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 1923853565213500, guid: 3f683abb7a202d8488a9e83dafa67be0,
-    type: 2}
---- !u!114 &114599515995361094
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1971890476388706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3c25969c16eede4ab3aa61ef85e1938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  RoleType: 1
 --- !u!136 &136030345467775392
 CapsuleCollider:
   m_ObjectHideFlags: 1

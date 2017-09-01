@@ -151,6 +151,7 @@
     <Compile Include="Assets\Scripts\Net\Message.cs" />
     <Compile Include="Assets\Scripts\Player\Arrow.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Player\RoleData.cs" />
     <Compile Include="Assets\Scripts\Request\BaseRequest.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Assets\Scripts\Request\RegisterRequest.cs" />
     <Compile Include="Assets\Scripts\Request\ShowTimerRequest.cs" />
     <Compile Include="Assets\Scripts\Request\StartGameRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\StartPlayRequest.cs" />
     <Compile Include="Assets\Scripts\Request\UpdateRoomRequest.cs" />
     <Compile Include="Assets\Scripts\UIPanel\BasePanel.cs" />
     <Compile Include="Assets\Scripts\UIPanel\GamePanel.cs" />

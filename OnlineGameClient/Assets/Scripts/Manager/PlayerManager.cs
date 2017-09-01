@@ -56,4 +56,20 @@ public class PlayerManager : BaseManager {
     {
         return currentRoleGameObject;
     }
+
+    private RoleData GetRoleData(RoleType rt)
+    {
+        RoleData rd = null;
+        roleDataDict.TryGetValue(rt,out rd);
+        return rd;
+    }
+    public void AddControlScript()
+    {
+        currentRoleGameObject.AddComponent<PlayerMove>();
+        PlayerAttack playerAttack =   currentRoleGameObject.AddComponent<PlayerAttack>();
+        RoleType rt = currentRoleGameObject.GetComponent<PlayerInfo>().RoleType;
+        RoleData rd = GetRoleData(rt);
+        playerAttack.arrowPrefab = rd.ArrowPrefab;
+
+    }
 }

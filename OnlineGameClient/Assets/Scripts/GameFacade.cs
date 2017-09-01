@@ -151,5 +151,10 @@ public class GameFacade : MonoBehaviour
         isEnterPlay = true;
     }
 
-   
+    public void AddControlScript()
+    {
+        playerManager.AddControlScript();
+    }
+
+
 }
