@@ -159,6 +159,7 @@
     <Compile Include="Assets\Scripts\Request\JoinRoomRequest.cs" />
     <Compile Include="Assets\Scripts\Request\ListRoomRequest.cs" />
     <Compile Include="Assets\Scripts\Request\LoginRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\MoveRequest.cs" />
     <Compile Include="Assets\Scripts\Request\QuitRoomRequest.cs" />
     <Compile Include="Assets\Scripts\Request\RegisterRequest.cs" />
     <Compile Include="Assets\Scripts\Request\ShowTimerRequest.cs" />

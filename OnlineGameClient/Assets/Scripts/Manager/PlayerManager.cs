@@ -12,6 +12,8 @@ public class PlayerManager : BaseManager {
 
     private RoleType currentRoleType;
     private GameObject currentRoleGameObject;
+    private GameObject playerSyncRequest;
+    private GameObject remoteRoleGameObject;
     public void SetCurrentRoleType(RoleType rt)
     {
         currentRoleType = rt;
@@ -49,6 +51,10 @@ public class PlayerManager : BaseManager {
             {
                 currentRoleGameObject = go;
             }
+            else
+            {
+                remoteRoleGameObject = go;
+            }
         }
     }
 
@@ -70,6 +76,15 @@ public class PlayerManager : BaseManager {
         RoleType rt = currentRoleGameObject.GetComponent<PlayerInfo>().RoleType;
         RoleData rd = GetRoleData(rt);
         playerAttack.arrowPrefab = rd.ArrowPrefab;
+
+    }
+
+    public void CreateSyncRequest()
+    {
+        playerSyncRequest = new GameObject("PlayerSyncRequest");
+        playerSyncRequest.AddComponent<MoveRequest>()
+            .SetLocalPlayer(currentRoleGameObject.transform, currentRoleGameObject.GetComponent<PlayerMove>())
+            .SetRemotePlayer(remoteRoleGameObject.transform);
 
     }
 }

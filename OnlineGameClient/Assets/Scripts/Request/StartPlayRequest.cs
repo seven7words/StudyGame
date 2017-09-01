@@ -6,7 +6,7 @@ using UnityEngine;
 
 public  class StartPlayRequest:BaseRequest
 {
-    private bool isAddControlScript = false;
+    private bool isStartPlaying = false;
         public override void Awake()
         {
             actionCode = ActionCode.StartPlay;
@@ -15,17 +15,17 @@ public  class StartPlayRequest:BaseRequest
 
         private void Update()
         {
-            if (isAddControlScript)
+            if (isStartPlaying)
             {
-                facade.AddControlScript();
-                isAddControlScript = false;
+                facade.StartPlaying();
+                isStartPlaying = false;
             }
            
         
         }
         public override void OnResponse(string data)
         {
-            isAddControlScript = true;
+            isStartPlaying = true;
         }
     }
 

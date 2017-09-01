@@ -7,6 +7,8 @@ public class PlayerMove : MonoBehaviour
 {
     private Animator anim;
     private float speed = 3;
+
+    public float forward = 0;
 	// Use this for initialization
 	void Start ()
 	{
@@ -28,7 +30,8 @@ public class PlayerMove : MonoBehaviour
 	        transform.rotation = Quaternion.LookRotation(new Vector3(h, 0, v));
 
 	        float res = Mathf.Max(Mathf.Abs(h), Mathf.Abs(v));
-	        anim.SetFloat("Forward", res);
+	        forward = res;
+            anim.SetFloat("Forward", res);
         }
        
 	}
