@@ -41,6 +41,14 @@ namespace GameServer.Controller
             return null;
         }
 
+        public string Shoot(string data, Client
+            client, Server server)
+        {
+            Room room = client.Room;
+            if (room != null)
+                room.BroadcastMessage(client, ActionCode.Shoot, data);
+            return null;
+        }
 
 
     }

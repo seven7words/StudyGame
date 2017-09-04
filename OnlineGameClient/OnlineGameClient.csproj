@@ -154,6 +154,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Player\RoleData.cs" />
+    <Compile Include="Assets\Scripts\Request\AttackRequest.cs" />
     <Compile Include="Assets\Scripts\Request\BaseRequest.cs" />
     <Compile Include="Assets\Scripts\Request\CreateRoomRequest.cs" />
     <Compile Include="Assets\Scripts\Request\JoinRoomRequest.cs" />
@@ -162,10 +163,13 @@
     <Compile Include="Assets\Scripts\Request\MoveRequest.cs" />
     <Compile Include="Assets\Scripts\Request\QuitRoomRequest.cs" />
     <Compile Include="Assets\Scripts\Request\RegisterRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\ShootRequest.cs" />
     <Compile Include="Assets\Scripts\Request\ShowTimerRequest.cs" />
     <Compile Include="Assets\Scripts\Request\StartGameRequest.cs" />
     <Compile Include="Assets\Scripts\Request\StartPlayRequest.cs" />
     <Compile Include="Assets\Scripts\Request\UpdateRoomRequest.cs" />
+    <Compile Include="Assets\Scripts\Tools\DestroyForTime.cs" />
+    <Compile Include="Assets\Scripts\Tools\UnityTools.cs" />
     <Compile Include="Assets\Scripts\UIPanel\BasePanel.cs" />
     <Compile Include="Assets\Scripts\UIPanel\GamePanel.cs" />
     <Compile Include="Assets\Scripts\UIPanel\LoginPanel.cs" />

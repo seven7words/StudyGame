@@ -20,5 +20,7 @@ namespace Common
         ShowTimer,
         StartPlay,
         Move,
+        Shoot,
+        Attack,
     }
 }

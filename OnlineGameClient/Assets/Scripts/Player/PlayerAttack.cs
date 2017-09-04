@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     private Transform leftHandTrans;
     public GameObject arrowPrefab;
-
+    private PlayerManager playerManager;
     private Vector3 shootDir;
 	// Use this for initialization
 	void Start ()
@@ -41,9 +41,14 @@ public class PlayerAttack : MonoBehaviour
 	    }
 	}
 
+    public void SetPlayerManager(PlayerManager playerManager)
+    {
+        this.playerManager = playerManager;
+    }
     private void Shoot()
     {
-        GameObject.Instantiate(arrowPrefab, leftHandTrans.position, Quaternion.LookRotation(shootDir));
+        playerManager.Shoot(arrowPrefab,leftHandTrans.position,Quaternion.LookRotation(shootDir));
+        
 
     }
 }

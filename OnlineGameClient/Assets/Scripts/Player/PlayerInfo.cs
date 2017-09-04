@@ -6,5 +6,5 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviour
 {
     public RoleType RoleType;
-
+    public bool isLocal = false;
 }

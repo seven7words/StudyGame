@@ -157,5 +157,10 @@ public class GameFacade : MonoBehaviour
         playerManager.CreateSyncRequest();
     }
 
+    public void SendAttack(int damage)
+    {
+        playerManager.SendAttack(damage);
+    }
+
 
 }

@@ -20,6 +20,8 @@ public class PlayerManager : BaseManager {
     }
     private Transform rolePositions;
     private UserData userData;
+    private ShootRequest shootRequest;
+    private AttackRequest attackRequest;
     private Dictionary<RoleType,RoleData> roleDataDict = new Dictionary<RoleType, RoleData>();
     public UserData UserData
     {
@@ -29,8 +31,8 @@ public class PlayerManager : BaseManager {
 
     private void InitRoleDataDict()
     {
-        roleDataDict.Add(RoleType.Blue, new RoleData(RoleType.Blue, "Prefabs/Hunter_BLUE", "Prefabs/Arrow_BLUE", rolePositions.GetChild(0)));
-        roleDataDict.Add(RoleType.Red, new RoleData(RoleType.Red, "Prefabs/Hunter_RED", "Prefabs/Arrow_RED", rolePositions.GetChild(1)));
+        roleDataDict.Add(RoleType.Blue, new RoleData(RoleType.Blue, "Prefabs/Hunter_BLUE", "Prefabs/Arrow_BLUE", rolePositions.GetChild(0), "Prefabs/Explosion_BLUE"));
+        roleDataDict.Add(RoleType.Red, new RoleData(RoleType.Red, "Prefabs/Hunter_RED", "Prefabs/Arrow_RED", rolePositions.GetChild(1), "Prefabs/Explosion_RED"));
 
     }
 
@@ -46,10 +48,11 @@ public class PlayerManager : BaseManager {
         foreach (RoleData rd in roleDataDict.Values)
         {
             GameObject go =  GameObject.Instantiate(rd.RolePrefab, rd.SpawnPosition, Quaternion.identity);
-
+            go.tag = "Player";
             if (rd.RoleType == currentRoleType)
             {
                 currentRoleGameObject = go;
+                currentRoleGameObject.GetComponent<PlayerInfo>().isLocal = true;
             }
             else
             {
@@ -76,7 +79,7 @@ public class PlayerManager : BaseManager {
         RoleType rt = currentRoleGameObject.GetComponent<PlayerInfo>().RoleType;
         RoleData rd = GetRoleData(rt);
         playerAttack.arrowPrefab = rd.ArrowPrefab;
-
+        playerAttack.SetPlayerManager(this);
     }
 
     public void CreateSyncRequest()
@@ -85,6 +88,30 @@ public class PlayerManager : BaseManager {
         playerSyncRequest.AddComponent<MoveRequest>()
             .SetLocalPlayer(currentRoleGameObject.transform, currentRoleGameObject.GetComponent<PlayerMove>())
             .SetRemotePlayer(remoteRoleGameObject.transform);
+    shootRequest =     playerSyncRequest.AddComponent<ShootRequest>();
+       shootRequest.PlayerManager = this;
+        attackRequest = playerSyncRequest.AddComponent<AttackRequest>();
+    }
+
+    public void Shoot(GameObject arrowPrefab, Vector3 pos, Quaternion rotation)
+    {
+        facade.PlayNormalSound(AudioManager.Sound_Timer);
+        GameObject.Instantiate(arrowPrefab, pos, rotation).GetComponent<Arrow>().isLocal = true;
+        shootRequest.SendRequest(arrowPrefab.GetComponent<Arrow>().RoleType,pos,rotation.eulerAngles);
+    }
+
+    public void RemoteShoot(RoleType rt, Vector3 pos, Vector3 rotation)
+    {
+        GameObject arrowPrefab = GetRoleData(rt).ArrowPrefab;
+     Transform transform =    GameObject.Instantiate(arrowPrefab).transform;
+        transform.position = pos;
+        transform.eulerAngles = rotation;
 
     }
+
+    public void SendAttack(int damage)
+    {
+        attackRequest.SendRequest(damage);
+    }
+
 }
