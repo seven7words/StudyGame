@@ -9,7 +9,14 @@ public class GameFacade : MonoBehaviour
 
     public static GameFacade Instance
     {
-        get { return _instance; }
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.Find("GameFacade").GetComponent<GameFacade>();
+            }
+            return _instance;
+        }
     }
 
     private bool isEnterPlay = false;
@@ -25,15 +32,15 @@ public class GameFacade : MonoBehaviour
 
     private ClientManager clientManager;
 
-    void Awake()
-    {
-        if (_instance != null)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        _instance = this;
-    }
+    //void Awake()
+    //{
+    //    if (_instance != null)
+    //    {
+    //        Destroy(this.gameObject);
+    //        return;
+    //    }
+    //    _instance = this;
+    //}
 	// Use this for initialization
 	void Start () {
 		InitManager();

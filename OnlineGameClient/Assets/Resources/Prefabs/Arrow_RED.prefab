@@ -278,8 +278,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a427124ea0ee0f438e4890e19038c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   RoleType: 1
+  isLocal: 0
+  explosionEffect: {fileID: 1214035874245250, guid: efb288cb59d25e64f87ab85a99a371a2,
+    type: 2}
 --- !u!135 &135910670464283764
 SphereCollider:
   m_ObjectHideFlags: 1

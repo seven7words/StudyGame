@@ -50,6 +50,15 @@ namespace GameServer.Controller
             return null;
         }
 
+        public string Attack(string data, Client client, Server server)
+        {
+            int damage = int.Parse(data);
+            Room room = client.Room;
+            if (room == null)
+                return null;
+            room.TakeDamage(damage,client);
+            return null;
+        }
 
     }
 }

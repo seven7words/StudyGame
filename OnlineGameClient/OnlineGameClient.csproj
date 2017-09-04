@@ -157,6 +157,7 @@
     <Compile Include="Assets\Scripts\Request\AttackRequest.cs" />
     <Compile Include="Assets\Scripts\Request\BaseRequest.cs" />
     <Compile Include="Assets\Scripts\Request\CreateRoomRequest.cs" />
+    <Compile Include="Assets\Scripts\Request\GameOverRequest.cs" />
     <Compile Include="Assets\Scripts\Request\JoinRoomRequest.cs" />
     <Compile Include="Assets\Scripts\Request\ListRoomRequest.cs" />
     <Compile Include="Assets\Scripts\Request\LoginRequest.cs" />

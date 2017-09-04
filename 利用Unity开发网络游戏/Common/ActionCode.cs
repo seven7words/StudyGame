@@ -22,5 +22,6 @@ namespace Common
         Move,
         Shoot,
         Attack,
+        GameOver,
     }
 }

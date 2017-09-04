@@ -21,6 +21,26 @@ namespace GameServer.Servers
         private Room room;
         private Result result;
 
+
+        public int HP { get; set; }
+
+        public bool IsDie()
+        {
+            return HP <= 0;
+        }
+        public bool TakeDamage(int damage)
+        {
+            HP -= damage;
+            HP = Math.Max(HP, 0);
+            if (HP == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public MySqlConnection MySQLConn
         {
             get { return mysqlConn; }

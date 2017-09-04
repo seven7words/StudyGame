@@ -25,7 +25,7 @@ public class Arrow : MonoBehaviour
 
 	}
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
@@ -45,5 +45,5 @@ public class Arrow : MonoBehaviour
         }
         GameObject.Instantiate(explosionEffect, transform.position, transform.rotation);
         GameObject.Destroy(this.gameObject);
-            }
+    }
 }

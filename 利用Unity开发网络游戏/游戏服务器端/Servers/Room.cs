@@ -22,7 +22,7 @@ namespace GameServer.Servers
         private List<Client> clientRoom = new List<Client>();
         private RoomState state = RoomState.WaitingJoin;
         private Server server;
-
+        private const int MAX_HP = 200;
         public Room(Server server)
         {
             this.server = server;
@@ -30,6 +30,8 @@ namespace GameServer.Servers
 
         public void AddClient(Client client)
         {
+            client.HP = MAX_HP;
+
             clientRoom.Add(client);
             client.Room = this;
             if (clientRoom.Count >= 2)
@@ -136,6 +138,40 @@ namespace GameServer.Servers
                 Thread.Sleep(1000);
             }
             BroadcastMessage(null,ActionCode.StartPlay, "r");
+        }
+
+        public void TakeDamage(int damage, Client excludeClient)
+        {
+            bool isDie = false;
+            foreach (Client client in clientRoom)
+            { 
+                if (client != excludeClient)
+                {
+                    if (client.TakeDamage(damage))
+                    {
+                        isDie = true;
+                    }
+                  
+                    
+                }
+            }
+
+        //如果其中一个角色死亡，要结束游戏
+            if (isDie == false)
+                return;
+            foreach (Client client in clientRoom)
+            {
+                if (client.IsDie())
+                {
+                    client.Send(ActionCode.GameOver, ((int) ReturnCode.Fail).ToString());
+                }
+                else
+                {
+                    client.Send(ActionCode.GameOver, ((int)ReturnCode.Success).ToString());
+
+                }
+            }
+            Close();
         }
     }
 }
