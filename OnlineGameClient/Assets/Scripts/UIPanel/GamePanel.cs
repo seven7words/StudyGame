@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Common;
 using DG.Tweening;
@@ -17,8 +18,33 @@ public class GamePanel : BasePanel
         timer.gameObject.SetActive(false);
         successBtn = transform.Find("SuccessButton").GetComponent<Button>();
         successBtn.gameObject.SetActive(false);
+        successBtn.onClick.AddListener(OnResultClick);
         failBtn = transform.Find("FailButton").GetComponent<Button>();
         failBtn.gameObject.SetActive(false);
+        failBtn.onClick.AddListener(OnResultClick);
+    }
+
+    public override void OnEnter()
+    {
+       gameObject.SetActive(true);
+        successBtn.gameObject.SetActive(false);
+        failBtn.gameObject.SetActive(false);
+
+    }
+
+    public override void OnExit()
+    {
+        gameObject.SetActive(false);
+        successBtn.gameObject.SetActive(false);
+        failBtn.gameObject.SetActive(false);
+
+    }
+
+    private void OnResultClick()
+    {
+       uiManager.PopPanel();
+       uiManager.PopPanel();
+        facade.GameOver();
     }
 
     public void ShowTimeSync(int time)

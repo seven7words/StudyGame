@@ -46,7 +46,7 @@ public class RoomListPanel : BasePanel
 
     private void OnCreateRoomClick()
     {
-      BasePanel panel =  uiManager.PushPanel(UIPanelType.Room);
+      BasePanel panel = uiManager.PushPanel(UIPanelType.Room);
         crRequest.SetPanel(panel);
         crRequest.SendRequest();//发起创建请求
     }

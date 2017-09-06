@@ -163,10 +163,12 @@ namespace GameServer.Servers
             {
                 if (client.IsDie())
                 {
+                    client.UpdateResult(false);
                     client.Send(ActionCode.GameOver, ((int) ReturnCode.Fail).ToString());
                 }
                 else
                 {
+                    client.UpdateResult(true);
                     client.Send(ActionCode.GameOver, ((int)ReturnCode.Success).ToString());
 
                 }

@@ -51,7 +51,6 @@ namespace GameServer.Controller
             }
             userDAO.AddUser(client.MySQLConn,username,password);
             return ((int)ReturnCode.Success).ToString();
-            return null;
         }
     }
 }

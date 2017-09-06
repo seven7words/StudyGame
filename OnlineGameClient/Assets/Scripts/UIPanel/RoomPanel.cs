@@ -46,10 +46,10 @@ public class RoomPanel : BasePanel
 
     public override void OnEnter()
     {
-        if(bluePanel!=null)
-            base.OnEnter();
-        
-       
+        if (bluePanel != null)
+            EnterAnim();
+
+
     }
 
     public override void OnExit()

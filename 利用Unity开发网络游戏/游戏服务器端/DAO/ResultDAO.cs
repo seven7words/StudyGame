@@ -43,5 +43,36 @@ namespace GameServer.DAO
             }
             return null;
         }
+
+        public void UpdateOrAddResult(Result res, MySqlConnection conn)
+        {
+            try
+            {
+                MySqlCommand cmd = null;
+
+                if (res.Id <= -1)
+                {
+                    cmd = new MySqlCommand("insert into result set totalcount=@totalcount,wincount=@wincount,userid=@userid", conn);
+                }
+                else
+                {
+                    cmd = new MySqlCommand("update result set totalcount=@totalcount,wincount=@wincount where userid=@userid ", conn);
+                }
+                cmd.Parameters.AddWithValue("totalcount", res.TotalCount);
+                cmd.Parameters.AddWithValue("wincount", res.WinCount);
+                cmd.Parameters.AddWithValue("userid", res.UserId);
+                cmd.ExecuteNonQuery();
+                if (res.Id <= -1)
+                {
+                    Result tempRes = GetResultByUserid(conn, res.UserId);
+                    res.Id = tempRes.Id;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("在UpdateOrAddResult的时候出现异常：" + e);
+            }
+
+        }
     }
 }

@@ -169,5 +169,10 @@ public class GameFacade : MonoBehaviour
         playerManager.SendAttack(damage);
     }
 
+    public void GameOver()
+    {
+        cameraManager.WalkthroughScene();
+        playerManager.GameOver();
+    }
 
 }

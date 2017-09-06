@@ -114,4 +114,13 @@ public class PlayerManager : BaseManager {
         attackRequest.SendRequest(damage);
     }
 
+    public void GameOver()
+    {
+        GameObject.Destroy(currentRoleGameObject);
+        GameObject.Destroy(playerSyncRequest);
+        GameObject.Destroy(remoteRoleGameObject);
+        shootRequest = null;
+        attackRequest = null;
+
+    }
 }
